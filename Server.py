@@ -1,3 +1,4 @@
+import json
 import socket
 import ipaddress
 import threading
@@ -36,29 +37,26 @@ def GetServerData():
 
 
 def ListenOnTCP(tcpSocket: socket.socket, socketAddress):
-    #TODO: Implement TCP Code, use GetServerData to query the database.
-    while True:
+    # TODO: Implement TCP Code, use GetServerData to query the database.
+    print("Accepted connection from", socketAddress)
+    with tcpSocket:
         try:
-            clientSocket,clientAddress= tcpSocket.accept()
-            print("connected by",clientAddress)
-            with clientSocket:
-                data = clientSocket.recv(maxPacketSize)
-                if not data:
-                    print("no data recieved")
-                    break
-                else:
-                    print("data recieved",data)
-                    serverData = GetServerData()
-                    clientSocket.sendall(str(serverData).encode())
+            clientMessage = tcpSocket.recv(maxPacketSize).decode()
+            while clientMessage:
+                print("Received message:", clientMessage)
+                serverData = GetServerData()
+                # Here you can process the serverData as needed
+                response = str(serverData)
+                tcpSocket.sendall(response.encode())
+                clientMessage = tcpSocket.recv(maxPacketSize).decode()
+        except ConnectionResetError:
+            # Connection was reset by client
+            pass
         except Exception as e:
-            print("error occured while listening on tcp socket")
-            break
-    #I THINK DONE
-
-
-
-
-
+            # Handle any other exceptions that might occur
+            print("An error occurred:", e)
+    print("Closing connection from", socketAddress)
+    sys.exit()
 
 
 def CreateTCPSocket() -> socket.socket:
@@ -79,7 +77,7 @@ def LaunchTCPThreads():
 if __name__ == "__main__":
     tcpThread = threading.Thread(target=LaunchTCPThreads);
     tcpThread.start();
-
+    exitSignal = False
     while not exitSignal:
         time.sleep(1);
     print("Ending program by exit signal...");
