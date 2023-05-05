@@ -1,6 +1,6 @@
 # IoT
 
-Description: Created a Server that will connect to a MongoDB database and will download some data and parse it, and created a Client to query the server for the resulting data. Used MongoDB, Dataniz, and Google Cloud VM to be able to run the code Locally and on the Cloud.
+Description: Created a Server that will connect to a MongoDB database and will download some data and parse it, and created a Client to query the server for the resulting data in real time. Used MongoDB, Dataniz, and Google Cloud VM to be able to run the code Locally and on the Cloud.
 
 The program execution:
 
