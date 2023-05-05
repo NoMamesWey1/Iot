@@ -7,7 +7,7 @@ import time
 import certifi
 
 DBName = "test"  # Use this to change which Database we're accessing
-connectionURL = "mongodb+srv://josejimenez530:cecs327@cluster0.bojal4q.mongodb.net/?retryWrites=true&w=majority"  # Put your database URL here
+connectionURL = ""  # Put your database URL here
 sensorTable = "traffic data"  # Change this to the name of your sensor data table
 
 
