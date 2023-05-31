@@ -1,15 +1,35 @@
-# IoT
+# IoT Data Analysis
 
-Description: Created a Server that will connect to a MongoDB database and will download some data and parse it, and created a Client to query the server for the resulting data in real time. Used MongoDB, Dataniz, and Google Cloud VM to be able to run the code Locally and on the Cloud.
+This project focuses on creating a server-client architecture for IoT data analysis. The server connects to a MongoDB database, downloads data, and performs analysis on the data. The client can query the server in real-time to retrieve the analyzed results.
 
-The program execution:
+## Description
 
-Step 1: The Client establishes the port and IP address of your Server
+The program execution follows the following steps:
 
-Step 2: Your Client sends a packet of data to query the Server
+**Step 1:** The client establishes the port and IP address of the server.
 
-Step 3: Your Server connects to and downloads the current data from your MongoDB Server
+**Step 2:** The client sends a packet of data to query the server.
 
-Step 4: Your Server figures out which sensor has the best average time, and sends the name of the associated road to the Client
+**Step 3:** The server connects to the MongoDB server and downloads the latest data.
 
-Step 5: Your Client prints out which road is the best one to take given your current data
+**Step 4:** The server analyzes the data and determines which sensor has the best average time. It then sends the name of the associated road to the client.
+
+**Step 5:** The client receives the response from the server and prints out the best road to take based on the current data.
+
+## Technologies Used
+
+The project utilizes the following technologies:
+
+- MongoDB: A NoSQL database used to store and retrieve the IoT data.
+- Dataniz: A data analysis library used to analyze the downloaded data.
+- Google Cloud VM: A virtual machine platform used to run the code both locally and on the cloud.
+
+## Execution
+
+To run the program:
+
+1. Set up a MongoDB database and ensure it is accessible.
+2. Configure the server with the appropriate MongoDB connection settings.
+3. Start the server program on the desired machine or cloud VM.
+4. Set up the client program with the server's IP address and port.
+5. Run the client program to send queries to the server and receive the analyzed results.
